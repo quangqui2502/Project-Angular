@@ -1,0 +1,355 @@
+<div class="modal">
+    <div class="card">
+        <div class="card__content">
+            <div class="card-user" >
+                <div class="card__img" *ngIf="!pageUpFile && !isChanging">
+                    <label class="popup">
+                        <input type="checkbox" id="myCheckbox">
+                        <div class="burger" tabindex="0">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <nav class="popup-window">
+                            <legend>Actions</legend>
+                            <ul>
+                                <li>
+                                    <button (click)="upLoadFile()">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" viewBox="0 0 24 24"
+                                            height="14" fill="none" class="svg-icon">
+                                            <g stroke-width="2" stroke-linejoin="round" stroke="currentColor"
+                                                fill="none">
+                                                <path
+                                                    d="m4 9c0-1.10457.89543-2 2-2h2l.44721-.89443c.33879-.67757 1.03131-1.10557 1.78889-1.10557h3.5278c.7576 0 1.4501.428 1.7889 1.10557l.4472.89443h2c1.1046 0 2 .89543 2 2v8c0 1.1046-.8954 2-2 2h-12c-1.10457 0-2-.8954-2-2z">
+                                                </path>
+                                                <path
+                                                    d="m15 13c0 1.6569-1.3431 3-3 3s-3-1.3431-3-3 1.3431-3 3-3 3 1.3431 3 3z">
+                                                </path>
+                                            </g>
+                                        </svg>
+                                        <span>Change picture</span>
+                                    </button>
+                                </li>
+                                <button (click)="toggleChangePassword()">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-key" viewBox="0 0 16 16" *ngIf="!isChanging">
+                                        <path
+                                            d="M0 8a4 4 0 0 1 7.465-2H14a.5.5 0 0 1 .354.146l1.5 1.5a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0L13 9.207l-.646.647a.5.5 0 0 1-.708 0L11 9.207l-.646.647a.5.5 0 0 1-.708 0L9 9.207l-.646.647A.5.5 0 0 1 8 10h-.535A4 4 0 0 1 0 8zm4-3a3 3 0 1 0 2.712 4.285A.5.5 0 0 1 7.163 9h.63l.853-.854a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.793-.793-1-1h-6.63a.5.5 0 0 1-.451-.285A3 3 0 0 0 4 5z" />
+                                        <path d="M4 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+                                    </svg>
+                                    <span *ngIf="!isChanging"> Change password</span>
+
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                                        *ngIf="isChanging" height="14" width="14" stroke="currentColor" fill="none">
+                                        <line y2="18" x2="6" y1="6" x1="18"></line>
+                                        <line y2="18" x2="18" y1="6" x1="6"></line>
+                                    </svg>
+
+                                    <span *ngIf="isChanging"> Cancel </span>
+                                </button>
+                                <hr>
+                                <li>
+                                    <button (click)="toggleEdit()">
+                                        <svg stroke-linejoin="round" stroke-linecap="round" stroke-width="2"
+                                            stroke="currentColor" fill="none" viewBox="0 0 24 24" height="14" width="14"
+                                            xmlns="http://www.w3.org/2000/svg" *ngIf="!isEditing">
+                                            <polygon points="16 3 21 8 8 21 3 21 3 16 16 3"></polygon>
+                                        </svg>
+                                        <span *ngIf="!isEditing"> Edit Info</span>
+
+                                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                                            *ngIf="isEditing" height="14" width="14" stroke="currentColor" fill="none">
+                                            <line y2="18" x2="6" y1="6" x1="18"></line>
+                                            <line y2="18" x2="18" y1="6" x1="6"></line>
+                                        </svg>
+
+                                        <span *ngIf="isEditing"> Cancel </span>
+                                    </button>
+                                </li>
+                            </ul>
+                        </nav>
+                    </label>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100%">
+
+                        <rect fill="#ffffff" width="540" height="450"></rect>
+                        <defs>
+                            <linearGradient id="a" gradientUnits="userSpaceOnUse" x1="0" x2="0" y1="0" y2="100%"
+                                gradientTransform="rotate(222,648,379)">
+                                <stop offset="0" stop-color="#ffffff"></stop>
+                                <stop offset="1" stop-color="#FC726E"></stop>
+                            </linearGradient>
+                            <pattern patternUnits="userSpaceOnUse" id="b" width="300" height="250" x="0" y="0"
+                                viewBox="0 0 1080 900">
+                                <g fill-opacity="0.5">
+                                    <polygon fill="#444" points="90 150 0 300 180 300"></polygon>
+                                    <polygon points="90 150 180 0 0 0"></polygon>
+                                    <polygon fill="#AAA" points="270 150 360 0 180 0"></polygon>
+                                    <polygon fill="#DDD" points="450 150 360 300 540 300"></polygon>
+                                    <polygon fill="#999" points="450 150 540 0 360 0"></polygon>
+                                    <polygon points="630 150 540 300 720 300"></polygon>
+                                    <polygon fill="#DDD" points="630 150 720 0 540 0"></polygon>
+                                    <polygon fill="#444" points="810 150 720 300 900 300"></polygon>
+                                    <polygon fill="#FFF" points="810 150 900 0 720 0"></polygon>
+                                    <polygon fill="#DDD" points="990 150 900 300 1080 300"></polygon>
+                                    <polygon fill="#444" points="990 150 1080 0 900 0"></polygon>
+                                    <polygon fill="#DDD" points="90 450 0 600 180 600"></polygon>
+                                    <polygon points="90 450 180 300 0 300"></polygon>
+                                    <polygon fill="#666" points="270 450 180 600 360 600"></polygon>
+                                    <polygon fill="#AAA" points="270 450 360 300 180 300"></polygon>
+                                    <polygon fill="#DDD" points="450 450 360 600 540 600"></polygon>
+                                    <polygon fill="#999" points="450 450 540 300 360 300"></polygon>
+                                    <polygon fill="#999" points="630 450 540 600 720 600"></polygon>
+                                    <polygon fill="#FFF" points="630 450 720 300 540 300"></polygon>
+                                    <polygon points="810 450 720 600 900 600"></polygon>
+                                    <polygon fill="#DDD" points="810 450 900 300 720 300"></polygon>
+                                    <polygon fill="#AAA" points="990 450 900 600 1080 600"></polygon>
+                                    <polygon fill="#444" points="990 450 1080 300 900 300"></polygon>
+                                    <polygon fill="#222" points="90 750 0 900 180 900"></polygon>
+                                    <polygon points="270 750 180 900 360 900"></polygon>
+                                    <polygon fill="#DDD" points="270 750 360 600 180 600"></polygon>
+                                    <polygon points="450 750 540 600 360 600"></polygon>
+                                    <polygon points="630 750 540 900 720 900"></polygon>
+                                    <polygon fill="#444" points="630 750 720 600 540 600"></polygon>
+                                    <polygon fill="#AAA" points="810 750 720 900 900 900"></polygon>
+                                    <polygon fill="#666" points="810 750 900 600 720 600"></polygon>
+                                    <polygon fill="#999" points="990 750 900 900 1080 900"></polygon>
+                                    <polygon fill="#999" points="180 0 90 150 270 150"></polygon>
+                                    <polygon fill="#444" points="360 0 270 150 450 150"></polygon>
+                                    <polygon fill="#FFF" points="540 0 450 150 630 150"></polygon>
+                                    <polygon points="900 0 810 150 990 150"></polygon>
+                                    <polygon fill="#222" points="0 300 -90 450 90 450"></polygon>
+                                    <polygon fill="#FFF" points="0 300 90 150 -90 150"></polygon>
+                                    <polygon fill="#FFF" points="180 300 90 450 270 450"></polygon>
+                                    <polygon fill="#666" points="180 300 270 150 90 150"></polygon>
+                                    <polygon fill="#222" points="360 300 270 450 450 450"></polygon>
+                                    <polygon fill="#FFF" points="360 300 450 150 270 150"></polygon>
+                                    <polygon fill="#444" points="540 300 450 450 630 450"></polygon>
+                                    <polygon fill="#222" points="540 300 630 150 450 150"></polygon>
+                                    <polygon fill="#AAA" points="720 300 630 450 810 450"></polygon>
+                                    <polygon fill="#666" points="720 300 810 150 630 150"></polygon>
+                                    <polygon fill="#FFF" points="900 300 810 450 990 450"></polygon>
+                                    <polygon fill="#999" points="900 300 990 150 810 150"></polygon>
+                                    <polygon points="0 600 -90 750 90 750"></polygon>
+                                    <polygon fill="#666" points="0 600 90 450 -90 450"></polygon>
+                                    <polygon fill="#AAA" points="180 600 90 750 270 750"></polygon>
+                                    <polygon fill="#444" points="180 600 270 450 90 450"></polygon>
+                                    <polygon fill="#444" points="360 600 270 750 450 750"></polygon>
+                                    <polygon fill="#999" points="360 600 450 450 270 450"></polygon>
+                                    <polygon fill="#666" points="540 600 630 450 450 450"></polygon>
+                                    <polygon fill="#222" points="720 600 630 750 810 750"></polygon>
+                                    <polygon fill="#FFF" points="900 600 810 750 990 750"></polygon>
+                                    <polygon fill="#222" points="900 600 990 450 810 450"></polygon>
+                                    <polygon fill="#DDD" points="0 900 90 750 -90 750"></polygon>
+                                    <polygon fill="#444" points="180 900 270 750 90 750"></polygon>
+                                    <polygon fill="#FFF" points="360 900 450 750 270 750"></polygon>
+                                    <polygon fill="#AAA" points="540 900 630 750 450 750"></polygon>
+                                    <polygon fill="#FFF" points="720 900 810 750 630 750"></polygon>
+                                    <polygon fill="#222" points="900 900 990 750 810 750"></polygon>
+                                    <polygon fill="#222" points="1080 300 990 450 1170 450"></polygon>
+                                    <polygon fill="#FFF" points="1080 300 1170 150 990 150"></polygon>
+                                    <polygon points="1080 600 990 750 1170 750"></polygon>
+                                    <polygon fill="#666" points="1080 600 1170 450 990 450"></polygon>
+                                    <polygon fill="#DDD" points="1080 900 1170 750 990 750"></polygon>
+                                </g>
+                            </pattern>
+                        </defs>
+                        <rect x="0" y="0" fill="url(#a)" width="100%" height="100%"></rect>
+                        <rect x="0" y="0" fill="url(#b)" width="100%" height="100%"></rect>
+                    </svg>
+                </div>
+                <div class="card__avatar" *ngIf="!pageUpFile && !isChanging">
+                    <img [src]="imageLink" style="width: 115px; height: 115px; border-radius: 50px;">
+                </div>
+                <div class="card__title" *ngIf="!pageUpFile && !isChanging">{{ email }}</div>
+                <div class="card__subtitle" *ngIf="!pageUpFile && !isChanging">
+                    <ul class="lists" style="padding-left: 0;" *ngIf="!pageUpFile && !isChanging">
+                        <li class="list" *ngFor="let item of skill">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                <g stroke-width="0" id="SVGRepo_bgCarrier"></g>
+                                <g stroke-linejoin="round" stroke-linecap="round" id="SVGRepo_tracerCarrier"></g>
+                                <g id="SVGRepo_iconCarrier">
+                                    <path fill="#000"
+                                        d="M21.5821 5.54289C21.9726 5.93342 21.9726 6.56658 21.5821 6.95711L10.2526 18.2867C9.86452 18.6747 9.23627 18.6775 8.84475 18.293L2.29929 11.8644C1.90527 11.4774 1.89956 10.8443 2.28655 10.4503C2.67354 10.0562 3.30668 10.0505 3.70071 10.4375L9.53911 16.1717L20.1679 5.54289C20.5584 5.15237 21.1916 5.15237 21.5821 5.54289Z"
+                                        clip-rule="evenodd" fill-rule="evenodd"></path>
+                                </g>
+                            </svg>
+                            <span> {{ item.skillName }} </span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="container" *ngIf="pageUpFile">
+                    <div class="header" [class.drag-over]="isDragOver" (dragover)="handleDragOver($event)"
+                        (dragleave)="handleDragLeave($event)" (drop)="handleDrop($event)">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" *ngIf="!isUpFile">
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                            <g id="SVGRepo_iconCarrier">
+                                <path
+                                    d="M7 10V9C7 6.23858 9.23858 4 12 4C14.7614 4 17 6.23858 17 9V10C19.2091 10 21 11.7909 21 14C21 15.4806 20.1956 16.8084 19 17.5M7 10C4.79086 10 3 11.7909 3 14C3 15.4806 3.8044 16.8084 5 17.5M7 10C7.43285 10 7.84965 10.0688 8.24006 10.1959M12 12V21M12 12L15 15M12 12L9 15"
+                                    stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                </path>
+                            </g>
+                        </svg>
+                        <img *ngIf="isUpFile" [src]="selectedImageUrl" style="width: 100%; height: 100%;">
+                        <p *ngIf="!isUpFile"> Drag file into this</p>
+                    </div>
+                    <label for="file" class="footer">
+                        <svg stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="currentColor"
+                            fill="#000000" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"
+                            (click)="closeupLoadFile()">
+                            <line y2="18" x2="6" y1="6" x1="18"></line>
+                            <line y2="18" x2="18" y1="6" x1="6"></line>
+                        </svg>
+                        <p>{{ selectedFileName }}</p>
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" *ngIf="selectedFile"
+                            (click)="deleteFile()">
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                            <g id="SVGRepo_iconCarrier">
+                                <path
+                                    d="M5.16565 10.1534C5.07629 8.99181 5.99473 8 7.15975 8H16.8402C18.0053 8 18.9237 8.9918 18.8344 10.1534L18.142 19.1534C18.0619 20.1954 17.193 21 16.1479 21H7.85206C6.80699 21 5.93811 20.1954 5.85795 19.1534L5.16565 10.1534Z"
+                                    stroke="#000000" stroke-width="2"></path>
+                                <path d="M19.5 5H4.5" stroke="#000000" stroke-width="2" stroke-linecap="round">
+                                </path>
+                                <path d="M10 3C10 2.44772 10.4477 2 11 2H13C13.5523 2 14 2.44772 14 3V5H10V3Z"
+                                    stroke="#000000" stroke-width="2"></path>
+                            </g>
+                        </svg>
+                    </label>
+                    <input id="file" type="file" #fileInput (change)="onFileSelected()">
+                </div>
+
+                <div *ngIf="isChanging">
+                    <form class="form">
+                        <button (click)="toggleChangePassword()">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" height="14"
+                                width="14" stroke="currentColor" fill="none">
+                                <line y2="18" x2="6" y1="6" x1="18"></line>
+                                <line y2="18" x2="18" y1="6" x1="6"></line>
+                            </svg>
+                        </button>
+                        <h4>Change password</h4>
+                        <span class="input-span">
+                            <label for="fullname" class="label">Current Password</label>
+                            <input type="password" name="currentPassword" id="fullname" [(ngModel)]="oldPassword"
+                                (change)="validationChangePassword()"></span>
+
+                        <span class="input-span">
+                            <label for="birthday" class="label">New Password</label>
+                            <input type="password" name="newPassword" id="birthday" [(ngModel)]="newPassword"
+                                (change)="validationChangePassword()"></span>
+
+                        <span class="input-span">
+                            <label for="birthday" class="label">Confirm Password</label>
+                            <input type="password" name="confirmPassword" id="birthday" [(ngModel)]="confirmPassword"
+                                (change)="validationChangePassword()"></span>
+                        <button class="cssbuttons-io-button" [disabled]="!isValid" *ngIf="isChanging"
+                            (click)="onChange()">
+                            <svg viewBox="0 0 640 512" fill="white" height="1em" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M144 480C64.5 480 0 415.5 0 336c0-62.8 40.2-116.2 96.2-135.9c-.1-2.7-.2-5.4-.2-8.1c0-88.4 71.6-160 160-160c59.3 0 111 32.2 138.7 80.2C409.9 102 428.3 96 448 96c53 0 96 43 96 96c0 12.2-2.3 23.8-6.4 34.6C596 238.4 640 290.1 640 352c0 70.7-57.3 128-128 128H144zm79-217c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l39-39V392c0 13.3 10.7 24 24 24s24-10.7 24-24V257.9l39 39c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-80-80c-9.4-9.4-24.6-9.4-33.9 0l-80 80z">
+                                </path>
+                            </svg>
+                            <span>Change</span>
+                        </button>
+
+                    </form>
+                </div>
+            </div>
+            <div class="card__form">
+                <div class="card-form-child">
+                    <form class="form">
+                        <span class="input-span">
+                            <label for="fullname" class="label">Full Name</label>
+                            <input type="text" name="fullname" id="fullname" [disabled]="!isEditing"
+                                [(ngModel)]="fullname"></span>
+
+                        <span class="input-span">
+                            <label for="birthday" class="label">Birthday</label>
+                            <input type="text" name="birthday" id="birthday" [disabled]="!isEditing"
+                                [(ngModel)]="birthday"></span>
+
+                        <span class="input-span">
+                            <label for="phone" class="label">Phone</label>
+                            <input type="text" name="phone" id="phone" [disabled]="!isEditing"
+                                [(ngModel)]="phone"></span>
+                        <span class="input-span">
+                            <label for="address" class="label">Address</label>
+                            <input type="text" name="address" id="address" [disabled]="!isEditing"
+                                [(ngModel)]="address"></span>
+
+                    </form>
+                </div>
+                <div class="card-form-child">
+                    <form class="form">
+                        <span class="input-span">
+                            <label for="gender" class="label">Gender</label>
+                            <div class="radio-inputs">
+                                <label>
+                                    <input class="radio-input" type="radio" value="female" name="gender" [disabled]="!isEditing">
+                                    <span class="radio-tile">
+                                        <span class="radio-icon">
+                                            <svg class="logo" width="48" height="48" fill="none" stroke="currentColor"
+                                                stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M12 15.75A7.125 7.125 0 1 0 12 1.5a7.125 7.125 0 0 0 0 14.25Z">
+                                                </path>
+                                                <path d="M12 15.75v6.75"></path>
+                                                <path d="M14.719 19.5H9.28"></path>
+                                            </svg>
+                                        </span>
+                                        <span class="radio-label">Female</span>
+                                    </span>
+                                </label>
+                                <label>
+                                    <input class="radio-input" type="radio" value="male" name="gender" [disabled]="!isEditing"
+                                        checked>
+                                    <span class="radio-tile">
+                                        <span class="radio-icon">
+                                            <svg class="logo" width="48" height="48" fill="none" stroke="currentColor"
+                                                stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M10.125 21a7.125 7.125 0 1 0 0-14.25 7.125 7.125 0 0 0 0 14.25Z">
+                                                </path>
+                                                <path d="M21 7.5V3h-4.5"></path>
+                                                <path d="M15.188 8.813 21 3"></path>
+                                            </svg>
+                                        </span>
+                                        <span class="radio-label">Male</span>
+                                    </span>
+                                </label>
+                            </div>
+                        </span>
+                        <span class="input-span">
+                            <label for="address" class="label">Skill</label>
+                            <div id="checklist" *ngIf="isEditing">
+                                <ng-container *ngFor="let skill of skills">
+                                    <input [checked]="isSkillSelected(skill)" [value]="skill.skillId" name="r"
+                                        type="checkbox" [id]="skill.skillId">
+                                    <label [for]="skill.skillId">{{ skill.skillName }}</label>
+                                </ng-container>
+                            </div>
+
+                        </span>
+                        <div>
+                            <button class="cssbuttons-io-button" *ngIf="isEditing" (click)="onUpdate()">
+                                <svg viewBox="0 0 640 512" fill="white" height="1em" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M144 480C64.5 480 0 415.5 0 336c0-62.8 40.2-116.2 96.2-135.9c-.1-2.7-.2-5.4-.2-8.1c0-88.4 71.6-160 160-160c59.3 0 111 32.2 138.7 80.2C409.9 102 428.3 96 448 96c53 0 96 43 96 96c0 12.2-2.3 23.8-6.4 34.6C596 238.4 640 290.1 640 352c0 70.7-57.3 128-128 128H144zm79-217c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l39-39V392c0 13.3 10.7 24 24 24s24-10.7 24-24V257.9l39 39c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-80-80c-9.4-9.4-24.6-9.4-33.9 0l-80 80z">
+                                    </path>
+                                </svg>
+                                <span>Upload</span>
+                            </button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-loading></app-loading>
+<app-toast></app-toast>
+<p-toast position="bottom-left"></p-toast>

@@ -1,0 +1,14 @@
+<div class="my-toast" *ngIf="showToast" [@toastAnimation]="showToast ? 'show' : 'hide'">
+    <div id="toast" class="toast" (click)="hideToast()">
+        <div class="toast__icon">
+            <i [ngClass]="getToastIconClass()"></i>
+        </div>
+        <div class="toast__body">
+            <h3 class="toast__title">{{ toastTitle }}</h3>
+            <p class="toast__msg">{{ toastMessage }}</p>
+        </div>
+        <div class="toast__close">
+            <i class="fas fa-times"></i>
+        </div>
+    </div>
+</div>

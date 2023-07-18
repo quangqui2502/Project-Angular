@@ -1,0 +1,19 @@
+<div class="spinner-overlay" *ngIf="isOtpVisible === true">
+  <form class="form">
+    <span class="close" (click)="onClose()">X</span>
+
+    <div class="info">
+      <span class="title">OTP Verification</span>
+      <p class="description">Please enter the code we have sent you. </p>
+    </div>
+
+    <div class="inputs">
+      <input placeholder="" type="tel" maxlength="6" [(ngModel)]="otp" [ngModelOptions]="{standalone:true}" >
+    </div>
+    
+    <a class="validate" (click)="onSubmit()">Verify</a>
+    <p class="resend">Resend OTP in <b>{{ countdown }}</b> seconds
+      <button [disabled]="otpSent" class="resend-action" (click)="onResendOTP()">Resend</button>
+    </p>
+  </form>
+</div>

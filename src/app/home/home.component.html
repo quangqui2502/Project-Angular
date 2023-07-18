@@ -1,0 +1,22 @@
+<div class="job-posts" style="padding-top: 100px;">
+    <h1 style="color: white;">Job Posts</h1>
+    <div class="job-post" *ngFor="let jobPost of jobPosts">
+        <div class="card">
+            <div class="card-header">
+                <h2>{{ jobPost.postName }}</h2>
+            </div>
+            <div class="card-body">
+                <div [innerHTML]="jobPost.description"></div>
+                <p>Salary: {{ jobPost.salary }}</p>
+                <p>Work Time: {{ jobPost.workTime }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<button (click)="product()">
+ 
+</button>
+<app-toast></app-toast>
+<app-loading></app-loading>
+<p-toast position="bottom-left"></p-toast>
