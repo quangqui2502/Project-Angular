@@ -18,7 +18,6 @@ import { OtpCodeComponent } from './otp-code/otp-code.component';
 import { ToastComponent } from './toast/toast.component';
 import { ProfileComponent } from './profile/profile.component';
 import { FooterComponent } from './footer/footer.component';
-import { ProductComponent } from './product/product.component';
 import { CalendarModule } from 'primeng/calendar';
 import { CheckboxModule } from 'primeng/checkbox';
 import { PasswordModule } from 'primeng/password';
@@ -49,7 +48,6 @@ import { FocusTrapModule } from 'primeng/focustrap';
     ToastComponent,
     ProfileComponent,
     FooterComponent,
-    ProductComponent,
     ForgotPasswordComponent
   ],
   imports: [
