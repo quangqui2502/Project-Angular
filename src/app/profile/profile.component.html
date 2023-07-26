@@ -1,7 +1,7 @@
 <div class="modal">
     <div class="card">
         <div class="card__content">
-            <div class="card-user" >
+            <div class="card-user">
                 <div class="card__img" *ngIf="!pageUpFile && !isChanging">
                     <label class="popup">
                         <input type="checkbox" id="myCheckbox">
@@ -232,18 +232,26 @@
                         <h4>Change password</h4>
                         <span class="input-span">
                             <label for="fullname" class="label">Current Password</label>
-                            <input type="password" name="currentPassword" id="fullname" [(ngModel)]="oldPassword"
-                                (change)="validationChangePassword()"></span>
+                            <p-password id="currentPassword" placeholder="Enter your Password" type="password"
+                                (change)="validationChangePassword()" [(ngModel)]="oldPassword" [toggleMask]="true"
+                                inputStyleClass="w-full"></p-password>
+
+                        </span>
 
                         <span class="input-span">
                             <label for="birthday" class="label">New Password</label>
-                            <input type="password" name="newPassword" id="birthday" [(ngModel)]="newPassword"
-                                (change)="validationChangePassword()"></span>
+                            <p-password id="newPassword" placeholder="Enter your Password" type="password"
+                                (change)="validationChangePassword()" [toggleMask]="true" [(ngModel)]="newPassword"
+                                inputStyleClass="w-full"></p-password>
+
+                        </span>
 
                         <span class="input-span">
                             <label for="birthday" class="label">Confirm Password</label>
-                            <input type="password" name="confirmPassword" id="birthday" [(ngModel)]="confirmPassword"
-                                (change)="validationChangePassword()"></span>
+                            <p-password id="confirmPassword" placeholder="Enter your Password" type="password"
+                                (change)="validationChangePassword()" [toggleMask]="true" [(ngModel)]="confirmPassword"
+                                inputStyleClass="w-full"></p-password>
+                        </span>
                         <button class="cssbuttons-io-button" [disabled]="!isValid" *ngIf="isChanging"
                             (click)="onChange()">
                             <svg viewBox="0 0 640 512" fill="white" height="1em" xmlns="http://www.w3.org/2000/svg">
@@ -287,7 +295,8 @@
                             <label for="gender" class="label">Gender</label>
                             <div class="radio-inputs">
                                 <label>
-                                    <input class="radio-input" type="radio" value="female" name="gender" [disabled]="!isEditing">
+                                    <input class="radio-input" type="radio" value="female" name="gender"
+                                        [disabled]="!isEditing">
                                     <span class="radio-tile">
                                         <span class="radio-icon">
                                             <svg class="logo" width="48" height="48" fill="none" stroke="currentColor"
@@ -303,8 +312,8 @@
                                     </span>
                                 </label>
                                 <label>
-                                    <input class="radio-input" type="radio" value="male" name="gender" [disabled]="!isEditing"
-                                        checked>
+                                    <input class="radio-input" type="radio" value="male" name="gender"
+                                        [disabled]="!isEditing" checked>
                                     <span class="radio-tile">
                                         <span class="radio-icon">
                                             <svg class="logo" width="48" height="48" fill="none" stroke="currentColor"

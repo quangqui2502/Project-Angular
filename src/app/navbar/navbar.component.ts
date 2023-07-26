@@ -6,6 +6,7 @@ import { SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
 import { AuthService } from '../Services/auth.service';
 import { MenuItem } from 'primeng/api';
 
+
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -13,7 +14,6 @@ import { MenuItem } from 'primeng/api';
 })
 export class NavbarComponent implements OnInit, OnDestroy  {
   sidebarVisible: boolean = false;
-  items: MenuItem[] | undefined;
   userDataSubscription!: Subscription;
   online: boolean = navigator.onLine;
 
@@ -61,8 +61,6 @@ export class NavbarComponent implements OnInit, OnDestroy  {
         userData.roleCode
       );
     });
-
-
     
   }
 
@@ -95,10 +93,11 @@ export class NavbarComponent implements OnInit, OnDestroy  {
   }
 
   logOut(): void {
-    this.cookieService.delete('token');
     this.isLogin = false;
     this.socialAuthService.signOut();
-    // this.notifyComponent.showNotity('Notification', 'Log out success!');
+    this.authService.logout().subscribe((response) => {
+      console.log(response);
+    });
     this.router.navigate(['/home']);
   }
 

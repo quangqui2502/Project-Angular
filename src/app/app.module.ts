@@ -37,6 +37,7 @@ import { MessageService } from 'primeng/api';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { AutoFocusModule } from 'primeng/autofocus';
 import { FocusTrapModule } from 'primeng/focustrap';
+import { MenubarModule } from 'primeng/menubar';
 @NgModule({
   declarations: [
     AppComponent,
@@ -75,7 +76,8 @@ import { FocusTrapModule } from 'primeng/focustrap';
     NoopAnimationsModule,
     AutoFocusModule,
     CalendarModule,
-    FocusTrapModule
+    FocusTrapModule,
+    MenubarModule
   ],
   providers: [
     {

@@ -153,4 +153,16 @@ export class AuthService implements OnInit {
     };
     return this.httpClient.get<any>(url, httpOptions);
   }
+
+
+  public logout(): Observable<any> {
+    const url = 'https://best-point-production.up.railway.app/api/v1/auth/logout';
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + this.cookieService.get('token')
+      })
+    };
+    return this.httpClient.get<any>(url, httpOptions);
+  }
 }

@@ -76,7 +76,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
     this.userDataSubscription = new Subscription();
     this.loadDataFromAuthService();
     this.authService.userData$.subscribe((userData) => {
-      this.fillData(userData.accountId, userData.email ,userData.imageLink, userData.fullname, userData.birthday, userData.phone, userData.address, userData.gender, userData.skill);
+      this.fillData(userData.accountId, userData.email, userData.imageLink, userData.fullname, userData.birthday, userData.phone, userData.address, userData.gender, userData.skill);
     });
   }
 
@@ -85,23 +85,23 @@ export class ProfileComponent implements OnInit, OnDestroy {
       this.userDataSubscription.unsubscribe();
     }
   }
-  
-  loadDataFromAuthService():void {
+
+  loadDataFromAuthService(): void {
     this.id = this.authService.id;
-    this.email =  this.authService.email;
-    this.fullname =  this.authService.fullname;
-    this.imageLink =  this.authService.imageLink;
-    this.roleCode =  this.authService.roleCode;
-    this.phone =  this.authService.phone;
-    this.address =  this.authService.address;
+    this.email = this.authService.email;
+    this.fullname = this.authService.fullname;
+    this.imageLink = this.authService.imageLink;
+    this.roleCode = this.authService.roleCode;
+    this.phone = this.authService.phone;
+    this.address = this.authService.address;
     const date = new Date(this.authService.birthday ?? '');
     const day = date.getDate();
     const month = date.getMonth() + 1;
     const year = date.getFullYear();
     const formattedDate = `${year}-${month < 10 ? '0' + month : month}-${day < 10 ? '0' + day : day}`;
-    this.birthday =  formattedDate;
-    this.gender =  this.authService.gender;
-    this.skill =  this.authService.skill;
+    this.birthday = formattedDate;
+    this.gender = this.authService.gender;
+    this.skill = this.authService.skill;
   }
 
 
@@ -165,7 +165,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
         }
       );
     }
-    if(!this.isEditing){
+    if (!this.isEditing) {
       this.loadingComponent.loading = false;
     }
   }
@@ -188,6 +188,9 @@ export class ProfileComponent implements OnInit, OnDestroy {
   confirmPassword: string = '';
 
   validationChangePassword(): void {
+    console.log(this.oldPassword.length);
+    console.log(this.newPassword.length);
+    console.log(this.confirmPassword.length);
     if (!(this.oldPassword.length < 6) || !(this.newPassword.length < 6) || !(this.confirmPassword.length < 6)) {
       if (this.newPassword.toLowerCase() !== this.confirmPassword.toLowerCase()) {
         this.messageService.add({ severity: 'warn', summary: 'Warning!', detail: 'New password and confirm password do not match!' });
@@ -233,7 +236,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
     }
   }
 
-  fillData(accountId:number, email:string, imageLink:string, fullname: string, birthday: string, phone: string, address: string, gender: string, skill: any): void {
+  fillData(accountId: number, email: string, imageLink: string, fullname: string, birthday: string, phone: string, address: string, gender: string, skill: any): void {
     this.loadingComponent.loading = true;
     this.id = accountId;
     this.email = email;
@@ -327,7 +330,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
         (response) => {
           console.log(response.data);
           this.loadingComponent.loading = false;
-          this.fillData(response.data.accountId ,response.data.email,response.data.imageLink ,response.data.fullname, response.data.birthday, response.data.phone, response.data.address, response.data.gender, response.data.skills);
+          this.fillData(response.data.accountId, response.data.email, response.data.imageLink, response.data.fullname, response.data.birthday, response.data.phone, response.data.address, response.data.gender, response.data.skills);
           this.messageService.add({ severity: 'success', summary: 'Success!', detail: 'Update Info success!' });
         },
         (error) => {

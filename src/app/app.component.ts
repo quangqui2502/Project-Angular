@@ -27,16 +27,15 @@ export class AppComponent implements OnInit {
   ) {}
   ngOnInit() {
     this.socialAuthService.authState.subscribe((user) => {
+      console.log(user);
+      
       this.socialUser = user;
       this.isLoggedin = user != null;
       this.authService.authenticateWithGoogle({
-        email: this.socialUser.email,
-        fullname: this.socialUser.name,
-        image_link: this.socialUser.photoUrl,
+        token: this.socialUser.idToken,
       }).subscribe(
         (response) => {
-          // Xử lý phản hồi thành công từ API
-          this.setCookie(response.data);
+          this.setCookie(response.data.accessToken);
           this.authService.loadComponentData();
           this.router.navigate(['/home']);
         },
@@ -53,13 +52,11 @@ export class AppComponent implements OnInit {
       this.socialUser = user;
       this.loadingComponent.loading = true;
       this.authService.authenticateWithGoogle({
-        email: this.socialUser.email,
-        fullname: this.socialUser.name,
-        image_link: this.socialUser.photoUrl,
+        token: this.socialUser.idToken,
       }).subscribe(
         (response) => {
           // Xử lý phản hồi thành công từ API
-          this.setCookie(response.data);
+          this.setCookie(response.data.accessToken);
           this.authService.loadComponentData();
           this.router.navigate(['/home']);
         },

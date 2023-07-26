@@ -96,7 +96,7 @@ export class LoginComponent implements OnInit {
           console.log('Authentication successful', response.data);
           // Xử lý sau khi xác thực thành công
           // Lưu token vào cookies
-          this.cookieService.set('token', response.data);
+          this.cookieService.set('token', response.data.accessToken);
           this.authService.loadComponentData();
           this.router.navigate(['/home']);
         },
@@ -135,13 +135,11 @@ export class LoginComponent implements OnInit {
       this.socialUser = user;
       this.loadingComponent.loading = true;
       this.authService.authenticateWithGoogle({
-        email: this.socialUser.email,
-        fullname: this.socialUser.name,
-        image_link: this.socialUser.photoUrl,
+        token: this.socialUser.idToken,
       }).subscribe(
         (response) => {
           // Xử lý phản hồi thành công từ API
-          this.setCookie(response.data);
+          this.setCookie(response.data.accessToken);
           this.authService.loadComponentData();
           this.router.navigate(['/home']);
         },
@@ -161,13 +159,11 @@ loginWithGoogle(): void {
     this.socialUser = user;
     this.loadingComponent.loading = true;
     this.authService.authenticateWithGoogle({
-      email: this.socialUser.email,
-      fullname: this.socialUser.name,
-      image_link: this.socialUser.photoUrl,
+      token: this.socialUser.idToken,
     }).subscribe(
       (response) => {
         // Xử lý phản hồi thành công từ API
-        this.setCookie(response.data);
+        this.setCookie(response.data.accessToken);
         this.authService.loadComponentData();
         this.router.navigate(['/home']);
       },
@@ -214,7 +210,7 @@ loginWithGoogle(): void {
             console.log('Register successful', response.data);
             // Xử lý sau khi xác thực thành công
             // Lưu token vào cookies
-            this.cookieService.set('token', response.data);
+            this.cookieService.set('token', response.data.accessToken);
             this.authService.loadComponentData();
             this.router.navigate(['/home']);
           },

@@ -3,25 +3,6 @@
 @import url(https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/5.0.0/mdb.min.css);
 @import url(https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css);
 
-
-.modal {
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  max-width: 100%;
-  max-height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #011522;
-  -webkit-box-shadow: rgba(0, 212, 255) 0px 0px 50px -15px;
-  animation: gradient 12s ease infinite;
-  box-shadow: rgba(0, 212, 255) 0px 0px 50px -15px;
-  overflow: hidden;
-  z-index: +1;
-}
-
-
 .form {
   display: flex;
   flex-direction: column;
@@ -120,111 +101,9 @@ h2 {
   border: 1px solid #2d79f3;
 }
 
-
-
-.bg-stars {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -2;
-  background-size: cover;
-  animation: animateBg 50s linear infinite;
-}
-
-@keyframes animateBg {
-  0%,100% {
-    transform: scale(1);
-  }
-
-  50% {
-    transform: scale(1.2);
-  }
-}
-
-.star {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 4px;
-  height: 4px;
-  background: #fff;
-  border-radius: 50%;
-  box-shadow: 0 0 0 4px rgba(255,255,255,0.1),0 0 0 8px rgba(255,255,255,0.1),0 0 20px rgba(255,255,255,0.1);
-  animation: animate 3s linear infinite;
-}
-
-.star::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 300px;
-  height: 1px;
-  background: linear-gradient(90deg,#fff,transparent);
-}
-
-@keyframes animate {
-  0% {
-    transform: rotate(315deg) translateX(0);
-    opacity: 1;
-  }
-
-  70% {
-    opacity: 1;
-  }
-
-  100% {
-    transform: rotate(315deg) translateX(-1000px);
-    opacity: 0;
-  }
-}
-
-.star:nth-child(1) {
-  top: 0;
-  right: 0;
-  left: initial;
-  animation-delay: 0s;
-  animation-duration: 1s;
-}
-
-.star:nth-child(2) {
-  top: 0;
-  right: 50px;
-  left: initial;
-  animation-delay: 0.2s;
-  animation-duration: 3s;
-}
-
-.star:nth-child(3) {
-  top: 0;
-  right: 100px;
-  left: initial;
-  animation-delay: 2.75s;
-  animation-duration: 2.75s;
-}
-
-.star:nth-child(4) {
-  top: 0;
-  right: 220px;
-  left: initial;
-  animation-delay: 1.6s;
-  animation-duration: 1.6s;
-}
-
-.star:nth-child(5) {
-  top: 0;
-  right: -220px;
-  left: initial;
-  animation-delay: 1.6s;
-  animation-duration: 1.6s;
-}
-
 .card {
   width: 450px;
   margin: 0 auto;
   background-color: #F8FBFE;
   border-radius: 45px;
-  z-index: 99999;
  }
